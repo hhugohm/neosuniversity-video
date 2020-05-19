@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.EqualsAndHashCode;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -26,12 +26,10 @@ import lombok.ToString;
  *
  */
 
-@Getter
-@Setter
+
 @ToString
 @RequiredArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
 @Entity
 @Table(name="COUNTRY",schema="VIDEODB")
 public class Country {
@@ -40,9 +38,10 @@ public class Country {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID_COUNTRY",nullable=false,unique=false)
 	@Getter
-	@Setter
 	private Long idcountry;
 	
+	@Getter
+	@Setter
 	@NonNull
 	@Column(name="COUNTRY",length=100,nullable=false)
 	private String description;

@@ -1,9 +1,7 @@
-package com.neosuniversity.video;
+package com.neosuniversity.video.repository.test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -24,10 +22,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.neosuniversity.video.entities.Country;
 import com.neosuniversity.video.repository.CountryRepository;
+import com.neosuniversity.video.repository.util.CountryRepositoryUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -36,7 +36,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-public class CountryRepositoryTest {
+public class CountryRepositoryTest implements CountryRepositoryUtil {
 	
 	@Autowired
 	private CountryRepository countryRepository;
@@ -44,26 +44,11 @@ public class CountryRepositoryTest {
 	private List<Country> countriesList;
 	private Map<String,Country> countriesMap;
 	
-	private static final String MEXICO="MEXICO";
-	private static final String CANADA="CANADA";
-	private static final String BRAZIL="BRAZIL";
-	private static final String ARGENTINA="ARGENTINA";
-	private static final String COLOMBIA="COLOMBIA";
-	private static final String MEXICO_UPDATE="MEXICO_UPDATE";
-	private static final String DESCRIPTION_FIELD="description";
-	private static final Long KEY_COUNTRY_1 =1L;
-	private static final int SIZE_0=0;
-	private static final int SIZE_1=1;
-	private static final int SIZE_2=2;
-	private static final int SIZE_3=3;
-	private static final int SIZE_5=5;
-	
-	
 	@BeforeAll
 	public void beforeAllInit() {
 		 log.info(":::::::Running - populate countries......");
-		countriesList = populateCountries();
-		countriesMap = populateCountriesMap();
+		countriesList = CountryRepositoryUtil.populateCountries();
+		countriesMap = CountryRepositoryUtil.populateCountriesMap();
 	}
 
 	@AfterAll
@@ -76,26 +61,6 @@ public class CountryRepositoryTest {
 		});
 		
 		assertThat(countryRepository.findById(1L)).isNotPresent();
-	}
-	
-	private List<Country> populateCountries(){
-		List<Country> lstCountry = new ArrayList<>();
-		lstCountry.add(new Country(MEXICO));
-		lstCountry.add(new Country(CANADA));
-		lstCountry.add(new Country(BRAZIL));
-		lstCountry.add(new Country(ARGENTINA));
-		lstCountry.add(new Country(COLOMBIA));
-		
-		return lstCountry;
-	}
-	private Map<String,Country> populateCountriesMap(){
-		countriesMap = new HashMap<>();
-		countriesMap.put(MEXICO, new Country(MEXICO));
-		countriesMap.put(CANADA, new Country(CANADA));
-		countriesMap.put(BRAZIL, new Country(BRAZIL));
-		countriesMap.put(ARGENTINA, new Country(ARGENTINA));
-		countriesMap.put(COLOMBIA, new Country(COLOMBIA));
-		return countriesMap;
 	}
 	
 	@Test

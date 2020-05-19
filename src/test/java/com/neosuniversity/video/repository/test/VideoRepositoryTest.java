@@ -1,4 +1,4 @@
-package com.neosuniversity.video;
+package com.neosuniversity.video.repository.test;
 
 import java.util.Optional;
 
@@ -13,7 +13,9 @@ import com.neosuniversity.video.entities.Movie;
 import com.neosuniversity.video.entities.Season;
 import com.neosuniversity.video.repository.MovieRepository;
 
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 class VideoRepositoryTest {
@@ -21,13 +23,12 @@ class VideoRepositoryTest {
 	@Autowired
 	private MovieRepository movieRepository;
 
-	@Test
-	void contextLoads() {
-	}
-
+	
 	@Test
 	public void testReadMovie() {
 		Optional<Movie> movie = movieRepository.findById(3L);
+		
+		log.info("¢¢¢¢¢¢¢¢¢¢   OKKKKKK" );
 		//assertThat(movie).isNotEmpty().containsInstanceOf(Season.class);
 
 		if (movie.isPresent()) {
