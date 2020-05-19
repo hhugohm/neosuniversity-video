@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.neosuniversity.video.entities.Country;
 
+
 public interface CountryRepositoryUtil {
 	
 	String MEXICO="MEXICO";
@@ -25,10 +26,8 @@ public interface CountryRepositoryUtil {
 	
 	static List<Country> populateCountries(){
 		List<Country> lstCountry = new ArrayList<>();
-		Country countryMexico = new Country();
-		countryMexico.setDescription(MEXICO);
 		
-		lstCountry.add(countryMexico);
+		lstCountry.add(new Country(MEXICO));
 		lstCountry.add(new Country(CANADA));
 		lstCountry.add(new Country(BRAZIL));
 		lstCountry.add(new Country(ARGENTINA));
