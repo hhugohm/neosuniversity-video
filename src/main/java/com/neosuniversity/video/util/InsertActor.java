@@ -16,9 +16,7 @@ public class InsertActor {
 		actor.setName("BRAT");
 		actor.setLasname("PIT");
 		
-		Country country = new Country();
-		country.setDescription("UNITED STATES");
-		
+		Country country = Country.builder().description("UNITED STATES").build();
 		actor.setCountry(country);
 		
 		session.save(actor);

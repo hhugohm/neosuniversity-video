@@ -35,7 +35,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-public class CountryRepositoryTest implements CountryRepositoryUtil {
+public class TestCountryRepository implements CountryRepositoryUtil {
 	
 	@Autowired
 	private CountryRepository countryRepository;
@@ -45,17 +45,17 @@ public class CountryRepositoryTest implements CountryRepositoryUtil {
 	
 	@BeforeAll
 	public void beforeAllInit() {
-		 log.info(":::::::Running - populate countries......");
+		 log.info("::::::::::::::::Running - populate countries ::::::::::::::::");
 		countriesList = CountryRepositoryUtil.populateCountries();
 		countriesMap = CountryRepositoryUtil.populateCountriesMap();
 	}
 
 	@AfterAll
     public  void cleanUp(){
-		log.info(":::::::CleanUp() countries .....");
+		log.info("::::::::::::::::CleanUp() countries ::::::::::::::::");
 		
         countriesList.stream().forEach(country ->{
-        	log.info("REMOVE COUNTRY: " +country.getDescription());
+        	log.debug("REMOVE COUNTRY: " +country.getDescription());
 			countryRepository.delete(country);
 		});
 		
@@ -65,6 +65,7 @@ public class CountryRepositoryTest implements CountryRepositoryUtil {
 	@Test
 	@Order(1)    
 	public void testCreateCountry() {
+		log.info("-----> Executing CREATE Country");
 		countryRepository.save(countriesMap.get(MEXICO));
 		
 		Optional<Country> countryDB = countryRepository.findById(KEY_COUNTRY_1);
@@ -75,6 +76,7 @@ public class CountryRepositoryTest implements CountryRepositoryUtil {
 	@DisplayName("😱")
 	@Order(2)    
 	public void testReadCountry() {
+		log.info("-----> Executing READ Country");
 		List<Country> lstCountries = countryRepository.findByDescriptionContaining(MEXICO);
 		
 		assertThat(lstCountries).isNotEmpty()
@@ -104,7 +106,7 @@ public class CountryRepositoryTest implements CountryRepositoryUtil {
 			int size = pageCountry.getSize();
 			long totalElements = pageCountry.getTotalElements();
 			int totalPages = pageCountry.getTotalPages();
-			log.info(
+			log.debug(
 					"page info - page number {}, numberOfElements: {}, size: {}, "
 							+ "totalElements: {}, totalPages: {}",
 					number, numberOfElements, size, totalElements, totalPages);
@@ -148,20 +150,21 @@ public class CountryRepositoryTest implements CountryRepositoryUtil {
 			pageable = pageCountry.nextPageable();
 			
 		} while (pageable.hasPrevious());
-		log.info("COUNT: "+countpage);
+		log.debug("COUNT: "+countpage);
 		
 	}
 
 	@Test
 	@Order(4)    
 	public void testUpdateCountry() {
+		log.info("-----> Executing UPDATE Country");
 		Optional<Country> countryDB = countryRepository.findById(KEY_COUNTRY_1);
 		countryDB.get().setDescription(MEXICO_UPDATE);
 		
 		countryRepository.save(countryDB.get());
 		
 		Optional<Country> countryUpdate = countryRepository.findById(KEY_COUNTRY_1);
-		log.info("####: " +countryUpdate.get().toString());
+		log.debug("####: " +countryUpdate.get().toString());
 		assertThat(countryUpdate).isNotEmpty()
 								 .get()
 								 .extracting(Country::getDescription)
@@ -172,6 +175,7 @@ public class CountryRepositoryTest implements CountryRepositoryUtil {
 	@Test
 	@Order(5)    
 	public void testDeleteCountry() {
+		log.info("-----> Executing DELETE Country");
 		Optional<Country> countryDB = countryRepository.findById(KEY_COUNTRY_1);
 		countryRepository.delete(countryDB.get());
 		

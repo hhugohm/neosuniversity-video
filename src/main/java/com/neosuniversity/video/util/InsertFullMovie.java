@@ -76,8 +76,7 @@ public class InsertFullMovie {
 		actor.setName("BRAT");
 		actor.setLasname("PIT");
 		
-		Country country = new Country();
-		country.setDescription("MEXICO");
+		Country country = Country.builder().description("MEXICO").build();
 		
 		
 		
@@ -85,8 +84,7 @@ public class InsertFullMovie {
 		actor2.setName("BRAT");
 		actor2.setLasname("PIT");
 		
-		Country country2 = new Country();
-		country2.setDescription("CANADA");
+		Country country2 = Country.builder().description("CANADA").build();
 		
 		
 		Set<Actor> actors = new HashSet<>();

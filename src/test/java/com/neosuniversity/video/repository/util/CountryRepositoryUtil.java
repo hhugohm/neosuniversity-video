@@ -27,21 +27,21 @@ public interface CountryRepositoryUtil {
 	static List<Country> populateCountries(){
 		List<Country> lstCountry = new ArrayList<>();
 		
-		lstCountry.add(new Country(MEXICO));
-		lstCountry.add(new Country(CANADA));
-		lstCountry.add(new Country(BRAZIL));
-		lstCountry.add(new Country(ARGENTINA));
-		lstCountry.add(new Country(COLOMBIA));
+		lstCountry.add(Country.builder().description(MEXICO).build());
+		lstCountry.add(Country.builder().description(CANADA).build());
+		lstCountry.add(Country.builder().description(BRAZIL).build());
+		lstCountry.add(Country.builder().description(ARGENTINA).build());
+		lstCountry.add(Country.builder().description(COLOMBIA).build());
 		
 		return lstCountry;
 	}
 	static Map<String,Country> populateCountriesMap(){
 		Map<String,Country> countriesMap = new HashMap<>();
-		countriesMap.put(MEXICO, new Country(MEXICO));
-		countriesMap.put(CANADA, new Country(CANADA));
-		countriesMap.put(BRAZIL, new Country(BRAZIL));
-		countriesMap.put(ARGENTINA, new Country(ARGENTINA));
-		countriesMap.put(COLOMBIA, new Country(COLOMBIA));
+		countriesMap.put(MEXICO, Country.builder().description(MEXICO).build());
+		countriesMap.put(CANADA, Country.builder().description(CANADA).build());
+		countriesMap.put(BRAZIL, Country.builder().description(BRAZIL).build());
+		countriesMap.put(ARGENTINA, Country.builder().description(ARGENTINA).build());
+		countriesMap.put(COLOMBIA,Country.builder().description(COLOMBIA).build());
 		return countriesMap;
 	}
 

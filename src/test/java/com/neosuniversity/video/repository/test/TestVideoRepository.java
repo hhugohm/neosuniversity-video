@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-class VideoRepositoryTest {
+class TestVideoRepository {
 
 	@Autowired
 	private MovieRepository movieRepository;
