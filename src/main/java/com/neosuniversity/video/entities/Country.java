@@ -6,14 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.experimental.Tolerate;
 
 
@@ -40,15 +38,14 @@ public class Country {
 	@JsonProperty("keyCountry")
 	private Long idcountry;
 	
-	
-	//@NonNull
+
 	@Column(name="COUNTRY",length=100,nullable=false)
+	@NotEmpty(message = "Please provide a description by country")
 	@JsonProperty("country")
 	private String description;
 	
 	@Tolerate
 	public Country() {
-		
 	}
 
 }

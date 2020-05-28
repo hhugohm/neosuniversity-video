@@ -45,7 +45,7 @@ public class TestCountryBusiness {
 		Optional<Country> optional = Optional.of(country);
 		
 		when(countryRepositoryMock.findById(1L)).thenReturn(optional);
-		assertEquals("MEXICO", countryBusinessI.getCountryById(1L).getDescription());
+		assertEquals("MEXICO", countryBusinessI.readCountryById(1L).getDescription());
 		
 	}
 	

@@ -49,8 +49,8 @@ public class TestCountryController {
 	public void TestGetCountryById() throws UnsupportedEncodingException, Exception {
 		MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
 		
-		given(this.countryBusinessI.getCountryById(1L)).willReturn(Country.builder().idcountry(1L).description("MEXICO").build());
-		String response = mockMvc.perform(get("/api/neosuniversity/video/countries/{idCountry}", 1L))
+		given(this.countryBusinessI.readCountryById(1L)).willReturn(Country.builder().idcountry(1L).description("MEXICO").build());
+		String response = mockMvc.perform(get("/api/v1/neosuniversity/countries/{idCountry}", 1L))
                 .andExpect(status().is(HttpStatus.OK.value()))
                 .andExpect(content().contentTypeCompatibleWith(APPLICATION_JSON_UTF8))
                 .andExpect(jsonPath("$.keyCountry", is(1)))
