@@ -20,6 +20,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 /**
  * 
@@ -44,7 +49,7 @@ public class Movie {
 	private List<Season> season= new ArrayList<>();
 	
 	
-	@OneToOne(fetch=FetchType.EAGER)
+	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name = "ID_TYPE_MOVIE")
 	private TypeMovie typemovie;
 	
@@ -62,10 +67,11 @@ public class Movie {
 	@Column(name="SYNOPSIS",length=900,nullable=true)
 	private String synopsis;
 	
-	
-	
+	@DateTimeFormat(pattern = "HH:mm:ss", iso = ISO.DATE_TIME)
+	@JsonFormat( shape = JsonFormat.Shape.STRING,pattern = "HH:mm:ss")
 	@Column(name="DURATION",nullable=true)
 	private Date duration;
+	
 	
 	@Column(name="IMAGE_PATH",length=500,nullable=true)
 	private String imagepath;
@@ -93,8 +99,6 @@ public class Movie {
 	public void setSynopsis(String synopsis) {
 		this.synopsis = synopsis;
 	}
-
-	
 
 	public Date getDuration() {
 		return duration;

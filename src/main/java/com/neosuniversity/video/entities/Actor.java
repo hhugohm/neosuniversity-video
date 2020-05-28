@@ -1,6 +1,7 @@
 package com.neosuniversity.video.entities;
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,11 +26,11 @@ public class Actor {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID_ACTOR",nullable=false,unique=false)
+	@Column(name="ID_ACTOR",nullable=false)
 	private Long idactor;
 	
 	
-	@OneToOne(fetch=FetchType.EAGER)
+	@OneToOne(cascade=CascadeType.ALL,  fetch=FetchType.EAGER)
 	@JoinColumn(name = "idcountry")
 	private Country country;
 	

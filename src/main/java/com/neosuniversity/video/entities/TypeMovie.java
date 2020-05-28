@@ -24,7 +24,7 @@ public class TypeMovie {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID_TYPE_MOVIE",nullable=false,unique=false)
+	@Column(name="ID_TYPE_MOVIE",nullable=false)
 	private Long idtypemovie;
 	
 	

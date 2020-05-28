@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.neosuniversity.video.util.ErrorMappingUtilsI;
+import com.neosuniversity.video.util.ErrorMappingUtilI;
 
 
 
 @ControllerAdvice
-public class VideoGlobalExceptionHandler extends ResponseEntityExceptionHandler implements ErrorMappingUtilsI {
+public class VideoGlobalExceptionHandler extends ResponseEntityExceptionHandler implements ErrorMappingUtilI {
 
 	
 	@ExceptionHandler(CountryNotFoundException.class)

@@ -64,7 +64,7 @@ public class CountryController {
 	}
 	
 	@DeleteMapping(path="/{idCountry}",produces = "application/json")
-	public ResponseEntity<Country> deleteCountry(@PathVariable("idCountry") Long idCountry) {
+	public ResponseEntity<?> deleteCountry(@PathVariable("idCountry") Long idCountry) {
 		
 		Country country = countryBusinessI.readCountryById(idCountry);
 		
@@ -77,4 +77,6 @@ public class CountryController {
        
 		return ResponseEntity.ok().location(location).build();
 	}
+	
+	//java.util.NoSuchElementException: No value present] with root cause
 }
