@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 
 /**
  * 
@@ -31,6 +33,7 @@ public class Chapter {
 	private String title;
 	
 	@Column(name="SYNOPSIS",length=900,nullable=true)
+	@JsonInclude(JsonInclude.Include.NON_NULL)
 	private String synopsis;
 	
 	
@@ -38,6 +41,7 @@ public class Chapter {
 	private Date duration;
 	
 	@Column(name="IMAGE_PATH",length=500,nullable=true)
+	@JsonInclude(JsonInclude.Include.NON_NULL)
 	private String imagepath;
 
 	public Long getIdchapter() {

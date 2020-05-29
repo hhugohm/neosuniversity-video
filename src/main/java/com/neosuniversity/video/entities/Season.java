@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 
 /**
  * 
@@ -25,6 +27,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="SEASON",schema="VIDEODB")
+@JsonPropertyOrder({ "idseason", "title", "synopsis", "chapters" })
 public class Season {
 	
 	@Id

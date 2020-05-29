@@ -12,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 /**
  * 
  * @author hhugohm
@@ -22,6 +25,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="ACTOR",schema="VIDEODB")
+@JsonPropertyOrder({ "idactor", "name", "lasname", "age","imagepath", "country"})
 public class Actor {
 	
 	@Id
@@ -45,6 +49,7 @@ public class Actor {
 	
 	
 	@Column(name="IMAGE_PATH",length=500,nullable=true)
+	@JsonInclude(JsonInclude.Include.NON_NULL)
 	private String imagepath;
 
 

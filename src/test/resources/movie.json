@@ -1,0 +1,52 @@
+{
+    "idmovie": 3,
+    "title": "DOCTOR HOUSE",
+    "duration": "02:05:11",
+    "typemovie": {
+        "idtypemovie": 3,
+        "type": "SERIE"
+    },
+    "season": [
+        {
+            "idseason": 5,
+            "title": "TEMPORADA 1",
+            "synopsis": "E",
+            "chapters": [
+                {
+                    "idchapter": 7,
+                    "title": "PILOTO",
+                    "duration": "2020-05-15T14:56:11.514+00:00"
+                },
+                {
+                    "idchapter": 8,
+                    "title": "LOCURA",
+                    "duration": "2020-05-15T14:56:11.514+00:00"
+                }
+            ]
+        },
+        {
+            "idseason": 6,
+            "title": "TEMPORADA 2",
+            "synopsis": "E",
+            "chapters": [
+                {
+                    "idchapter": 9,
+                    "title": "SAVE ME",
+                    "duration": "2020-05-15T14:56:11.514+00:00"
+                }
+            ]
+        }
+    ],
+    "actors": [
+        {
+            "idactor": 3,
+            "name": "BRAT",
+            "lasname": "PIT",
+            "age": 23,
+            "country": {
+                "keyCountry": 6,
+                "country": "UNITED STATES OF AMERICA"
+            }
+        }
+    ]
+}

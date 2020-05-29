@@ -24,6 +24,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 
 
 /**
@@ -36,6 +40,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
  */
 @Entity
 @Table(name="MOVIE",schema="VIDEODB")
+@JsonPropertyOrder({ "idmovie", "title", "synopsis", "duration", "imagepath","typemovie","season", "actors" })
 public class Movie {
 	
 	@Id
@@ -57,6 +62,7 @@ public class Movie {
 	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinTable(name="MOVIE_ACTOR",joinColumns=@JoinColumn(name="ID_MOVIE"),
 	inverseJoinColumns=@JoinColumn(name="ID_ACTOR"))
+	@JsonProperty("actors")
 	private Set<Actor> actors = new HashSet<>();
 	
 	
@@ -65,6 +71,7 @@ public class Movie {
 	
 	
 	@Column(name="SYNOPSIS",length=900,nullable=true)
+	@JsonInclude(JsonInclude.Include.NON_NULL)
 	private String synopsis;
 	
 	@DateTimeFormat(pattern = "HH:mm:ss", iso = ISO.DATE_TIME)
@@ -74,6 +81,7 @@ public class Movie {
 	
 	
 	@Column(name="IMAGE_PATH",length=500,nullable=true)
+	@JsonInclude(JsonInclude.Include.NON_NULL)
 	private String imagepath;
 
 	public Long getIdmovie() {
