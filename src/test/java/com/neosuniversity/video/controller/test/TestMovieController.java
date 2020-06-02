@@ -40,7 +40,7 @@ import lombok.extern.slf4j.Slf4j;
 @AutoConfigureMockMvc
 public class TestMovieController {
 	
-	@Value("classpath:movie.json")
+	@Value("classpath:data/movie.json")
 	private Resource resourceFile;
 	
 	@Autowired
@@ -51,7 +51,7 @@ public class TestMovieController {
 	
 	@Test
 	@Order(1)    
-	public void TestGetCountryById() throws UnsupportedEncodingException, Exception {
+	public void testGetCountryById() throws UnsupportedEncodingException, Exception {
 		MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
         ObjectMapper objectMapper = new ObjectMapper();
 

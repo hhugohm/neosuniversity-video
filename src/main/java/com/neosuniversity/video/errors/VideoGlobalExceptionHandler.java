@@ -29,7 +29,14 @@ public class VideoGlobalExceptionHandler extends ResponseEntityExceptionHandler 
 		return buildResponseEntity(apiError);
 
 	}
+	@ExceptionHandler(MovieNotFoundException.class)
+	public ResponseEntity<Object> handleMovieNotFound(MovieNotFoundException ex) {
+		ErrorMapping apiError = new ErrorMapping(HttpStatus.NOT_FOUND);
+		apiError.setMessage(ex.getMessage());
+		apiError.setDebugMessage(ExceptionUtils.getStackTrace(ex));
+		return buildResponseEntity(apiError);
 
+	}
 	
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,

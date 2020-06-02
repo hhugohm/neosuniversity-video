@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,7 +38,7 @@ public class MovieController {
 	}
 	
 	@PostMapping(consumes = "application/json",produces = "application/json")
-	public ResponseEntity<Movie> createCountry(@Valid @RequestBody Movie movie) {
+	public ResponseEntity<Void> createCountry(@Valid @RequestBody Movie movie) {
 		
 		log.info(movie.toString());
 		
@@ -46,10 +47,19 @@ public class MovieController {
                                     .path("/{id}")
                                     .buildAndExpand(movie.getIdmovie())
                                     .toUri();
-        return ResponseEntity.created(location).body(movie);
+        return ResponseEntity.created(location).build();
+	}
+	@PutMapping(path="/{idMovie}",consumes = "application/json",produces = "application/json")
+	public ResponseEntity<Void> updateCountry(@Valid @RequestBody Movie movie,@PathVariable("idMovie") Long idMovie) {
+		
+		log.info(movie.toString());
+		movieBusinessI.updateMovie(movie, idMovie);
+		
+		return ResponseEntity.ok().build();
+		
 	}
 	@DeleteMapping(path="/{idMovie}",produces = "application/json")
-	public ResponseEntity<?> deleteCountry(@PathVariable("idMovie") Long idMovie) {
+	public ResponseEntity<Void> deleteCountry(@PathVariable("idMovie") Long idMovie) {
 		
 		Movie movie = movieBusinessI.readMovieById(idMovie);
 		
