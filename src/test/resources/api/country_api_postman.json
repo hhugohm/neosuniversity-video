@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "0de24e62-44c8-4ee0-96d6-033e6d158d14",
+		"name": "Country",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Read country by ID -Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/neosuniversity/video/countries?idCountry=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"neosuniversity",
+						"video",
+						"countries"
+					],
+					"query": [
+						{
+							"key": "idCountry",
+							"value": "3"
+						}
+					]
+				},
+				"description": "Read country by ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Read Country by ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/neosuniversity/countries/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"neosuniversity",
+						"countries",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Country",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"country\": \"CUBA\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/neosuniversity/countries",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"neosuniversity",
+						"countries"
+					]
+				},
+				"description": "Create Country"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Country",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"keyCountry\": 6,\n    \"country\": \"CUBA-UPDATE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/neosuniversity/countries",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"neosuniversity",
+						"countries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Country",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/neosuniversity/countries/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"neosuniversity",
+						"countries",
+						"5"
+					]
+				},
+				"description": "Delete Country"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

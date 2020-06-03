@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "946ca86b-a1b1-419b-91a5-678002398111",
+		"name": "Movie",
+		"description": "Movie",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Read Movie by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/neosuniversity/movies/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"neosuniversity",
+						"movies",
+						"3"
+					]
+				},
+				"description": "Read Movie by ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Movie",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"season\": [\n        {\n            \"chapters\": [\n                {\n                    \"title\": \"PILOTO\",\n                    \"duration\": \"2020-05-15T14:56:11.514+00:00\"\n                },\n                {\n                    \"title\": \"LOCURA\",\n                    \"duration\": \"2020-05-15T14:56:11.514+00:00\"\n                }\n            ],\n            \"title\": \"TEMPORADA 1\",\n            \"synopsis\": \"E\"\n        },\n       \n        {\n            \"chapters\": [\n                {\n                    \"title\": \"SAVE ME\",\n                    \"duration\": \"2020-05-15T14:56:11.514+00:00\"\n                }\n            ],\n            \"title\": \"TEMPORADA 2\",\n            \"synopsis\": \"E\"\n        }\n    ],\n    \"typemovie\": {\n        \"type\": \"SERIE\"\n    },\n    \"actors\": [\n        {\n            \"name\": \"BRAT\",\n            \"lasname\": \"PIT\",\n            \"age\": 23,\n           \"country\": {\n        \t\t\t\t\t\"country\": \"UNITED STATES OF AMERICA\"\n    \t\t\t\t\t}\n        }\n    ],\n    \"title\": \"DOCTOR HOUSE\",\n    \"duration\": \"02:05:11\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/neosuniversity/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"neosuniversity",
+						"movies"
+					]
+				},
+				"description": "Create Movie"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Movie",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/neosuniversity/movies/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"neosuniversity",
+						"movies",
+						"2"
+					]
+				},
+				"description": "Delete Movie"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Movie",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"DOCTOR HOUSE\",\n    \"duration\": \"02:06:14\",\n    \"typemovie\": {\n        \"idtypemovie\": 3,\n        \"type\": \"SERIE\"\n    },\n    \"season\": [\n        {\n            \"idseason\": 5,\n            \"title\": \"TEMPORADA 1\",\n            \"synopsis\": \"E\",\n            \"chapters\": [\n                {\n                    \"idchapter\": 7,\n                    \"title\": \"PILOTO\",\n                    \"duration\": \"2020-05-15T14:56:11.514+00:00\"\n                },\n                {\n                    \"idchapter\": 8,\n                    \"title\": \"LOCURA\",\n                    \"duration\": \"2020-05-15T14:56:11.514+00:00\"\n                }\n            ]\n        },\n        {\n            \"idseason\": 5,\n            \"title\": \"TEMPORADA 1\",\n            \"synopsis\": \"E\",\n            \"chapters\": [\n                {\n                    \"idchapter\": 7,\n                    \"title\": \"PILOTO\",\n                    \"duration\": \"2020-05-15T14:56:11.514+00:00\"\n                },\n                {\n                    \"idchapter\": 8,\n                    \"title\": \"LOCURA\",\n                    \"duration\": \"2020-05-15T14:56:11.514+00:00\"\n                }\n            ]\n        },\n        {\n            \"idseason\": 6,\n            \"title\": \"TEMPORADA 2\",\n            \"synopsis\": \"E\",\n            \"chapters\": [\n                {\n                    \"idchapter\": 9,\n                    \"title\": \"SAVE ME\",\n                    \"duration\": \"2020-05-15T14:56:11.514+00:00\"\n                }\n            ]\n        }\n    ],\n    \"actors\": [\n        {\n            \"idactor\": 3,\n            \"name\": \"BRAT\",\n            \"lasname\": \"PIT\",\n            \"age\": 23,\n            \"country\": {\n                \"keyCountry\": 6,\n                \"country\": \"UNITED STATES OF AMERICA\"\n            }\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/neosuniversity/movies/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"neosuniversity",
+						"movies",
+						"3"
+					]
+				},
+				"description": "Update Movie"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
