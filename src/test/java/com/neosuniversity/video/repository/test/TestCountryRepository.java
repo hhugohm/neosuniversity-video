@@ -1,3 +1,24 @@
+/******************************************************************************************
+Copyright (c) 2020 NeosSoftware Corporation
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is furnished
+to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+************************************************************************************************/
 package com.neosuniversity.video.repository.test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,19 +51,34 @@ import com.neosuniversity.video.repository.util.CountryRepositoryUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * The Class TestCountryRepository.
+ * 
+ * @author Neosuniversity
+ * @version 1.0
+ */
 @TestMethodOrder(OrderAnnotation.class)
 @TestInstance(Lifecycle.PER_CLASS)
+
+/** The Constant log. */
 @Slf4j
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 public class TestCountryRepository implements CountryRepositoryUtil {
 	
+	/** The country repository. */
 	@Autowired
 	private CountryRepository countryRepository;
 	
+	/** The countries list. */
 	private List<Country> countriesList;
+	
+	/** The countries map. */
 	private Map<String,Country> countriesMap;
 	
+	/**
+	 * Before all init.
+	 */
 	@BeforeAll
 	public void beforeAllInit() {
 		 log.info("::::::::::::::::Running - populate countries ::::::::::::::::");
@@ -50,6 +86,9 @@ public class TestCountryRepository implements CountryRepositoryUtil {
 		countriesMap = CountryRepositoryUtil.populateCountriesMap();
 	}
 
+	/**
+	 * Clean up.
+	 */
 	@AfterAll
     public  void cleanUp(){
 		log.info("::::::::::::::::CleanUp() countries ::::::::::::::::");
@@ -62,6 +101,9 @@ public class TestCountryRepository implements CountryRepositoryUtil {
 		assertThat(countryRepository.findById(1L)).isNotPresent();
 	}
 	
+	/**
+	 * Test create country.
+	 */
 	@Test
 	@Order(1)    
 	public void testCreateCountry() {
@@ -72,6 +114,9 @@ public class TestCountryRepository implements CountryRepositoryUtil {
 		assertThat(countryDB).isNotEmpty();
 	}
 	
+	/**
+	 * Test read country.
+	 */
 	@Test
 	@DisplayName("😱")
 	@Order(2)    
@@ -85,6 +130,10 @@ public class TestCountryRepository implements CountryRepositoryUtil {
 								.containsExactly(MEXICO)
 								.doesNotContainNull();
 	}
+	
+	/**
+	 * Test read pageable country.
+	 */
 	@Test
 	@Order(3)    
 	public void testReadPageableCountry() {
@@ -154,6 +203,9 @@ public class TestCountryRepository implements CountryRepositoryUtil {
 		
 	}
 
+	/**
+	 * Test update country.
+	 */
 	@Test
 	@Order(4)    
 	public void testUpdateCountry() {
@@ -172,6 +224,9 @@ public class TestCountryRepository implements CountryRepositoryUtil {
 								 .equalsIgnoreCase(MEXICO_UPDATE);
 	}
 	
+	/**
+	 * Test delete country.
+	 */
 	@Test
 	@Order(5)    
 	public void testDeleteCountry() {
