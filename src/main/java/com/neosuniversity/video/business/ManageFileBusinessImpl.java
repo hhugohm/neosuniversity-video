@@ -3,13 +3,17 @@
  */
 package com.neosuniversity.video.business;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,8 +29,7 @@ public class ManageFileBusinessImpl implements ManageFileBusinessI {
 
 	private final Path fileStorageLocation;
 
-	//@Autowired
-	//private StorageImageRepository storageImageRepository;
+	
 
 	@Autowired
 	public ManageFileBusinessImpl(StorageImageMapping storageImageMapping) {
@@ -83,6 +86,27 @@ public class ManageFileBusinessImpl implements ManageFileBusinessI {
 		} catch (IOException ex) {
 
 			throw new RuntimeException("Could not store file " + fileName + ". Please try again!", ex);
+
+		}
+
+	}
+	
+	public Resource loadFileAsResource(String fileName) throws Exception {
+
+		try {
+
+			Path filePath = this.fileStorageLocation.resolve(fileName).normalize();
+			//System.out.println("######### "+ filePath.);
+			
+			Resource resource = new UrlResource(filePath.toUri());
+			if (resource.exists()) {
+				return resource;
+
+			} else {
+				throw new FileNotFoundException("File not found " + fileName);
+			}
+		} catch (MalformedURLException ex) {
+			throw new FileNotFoundException("File not found " + fileName);
 
 		}
 
